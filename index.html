@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome Ramadan</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.3/dist/tailwind.min.css" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container mx-auto p-4">
+        <h1 class="text-xl font-bold mb-4">Welcome Ramadan</h1>
+        <div>
+            <label for="name" class="block">Your Name</label>
+            <input type="text" id="name" placeholder="Enter your first name" class="border p-2 w-full">
+        </div>
+        <div class="mt-4">
+            <label for="message" class="block">Your Message</label>
+            <textarea id="message" placeholder="Enter your Ramadan message" class="border p-2 w-full"></textarea>
+        </div>
+        <button id="generateLink" class="mt-4 bg-blue-500 text-white p-2 rounded">Generate Link</button>
+    </div>
+<!-- Existing content -->
+<div id="modal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full" id="my-modal">
+    <div class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
+      <div class="mt-3 text-center">
+        <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">Your Shortened Link</h3>
+        <div class="mt-2">
+          <p class="text-sm text-gray-500" id="shortened-link"></p>
+        </div>
+        <div class="mt-4">
+            <button id="copy-link" class="px-4 py-2 bg-blue-500 text-white text-base font-medium rounded-md w-full shadow-sm hover:bg-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-300">
+              Copy Link
+            </button>
+        </div>
+        <!-- Next to the copy button -->
+<button id="share-link" class="px-4 py-2 mt-2 bg-green-500 text-white text-base font-medium rounded-md w-full shadow-sm hover:bg-green-400 focus:outline-none focus:ring-2 focus:ring-green-300">
+    Share Link
+  </button>
+  
+        <div class="items-center px-4 py-3">
+          <button id="close-modal" class="px-4 py-2 bg-gray-500 text-white text-base font-medium rounded-md w-full shadow-sm hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-300">
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+    <script src="script.js"></script>
+</body>
+</html>

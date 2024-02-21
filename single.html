@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preview Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.2/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 flex items-center justify-center h-screen">
+    <div class="bg-white p-6 rounded-lg shadow-lg">
+        <h2 class="text-2xl font-bold mb-2 text-gray-800" id="welcome-message">Welcome to Ramadan</h2>
+        <p class="text-gray-700" id="personal-message">Your message will appear here.</p>
+    </div>
+
+    <!-- <script src="preview.js"></script> -->
+<script>
+    document.addEventListener('DOMContentLoaded', function showPage() {
+        const queryParams = new URLSearchParams(window.location.search);
+        const name = queryParams.get('name');
+        const message = queryParams.get('message');
+    
+        if (name && message) {
+            document.getElementById('welcome-message').innerText = `Welcome, ${decodeURIComponent(name)}!`;
+            document.getElementById('personal-message').innerText = decodeURIComponent(message);
+        } else {
+            document.getElementById('welcome-message').innerText = "Welcome to Ramadan!";
+            document.getElementById('personal-message').innerText = "It seems there's no personal message to display.";
+        }
+    });
+
+    setTimeout(showPage, 10);
+</script>
+</body>
+</html>
