@@ -38,7 +38,9 @@
   </style>
 </head>
 <body>
-  <div id="loader" class="loader"></div>
+  <!-- Loader HTML -->
+<div id="loader" class="loader" style="display: block;"></div>
+
 
   
   <div class="present">
@@ -56,40 +58,36 @@
   </div>
 
   <script>
-   
+    document.addEventListener('DOMContentLoaded', function showpage() {
+      // Display loader immediately, handled by inline styles
+    
+      // Parse URL parameters and replace content
+      const urlParams = new URLSearchParams(window.location.search);
+      const name = urlParams.get('name');
+      const message = urlParams.get('message');
+    
+      if (name && message) {
+        document.querySelector('.promo p').textContent = name;
+        document.querySelector('.promo h2').textContent = message;
+      }
+    
+      // Event listener for the box click
+      const presentBox = document.querySelector('.present');
+      presentBox.addEventListener('click', function() {
+        this.classList.add('open');
+        // Remove event listener to ensure it only happens once
+        presentBox.removeEventListener('click', arguments.callee);
+      });
+    
+      // Ensure loader is hidden once everything is loaded
+      window.addEventListener('load', function() {
+        document.getElementById('loader').style.display = 'none';
+      });
+    });
 
-   function toggleOpen() {
-  document.querySelector('.present').classList.toggle('open');
-
-  // Immediately remove the event listener after the first click
-  document.querySelector('.present').removeEventListener('click', toggleOpen);
-}
-
-// Add event listener on DOM content loaded
-window.addEventListener('DOMContentLoaded', (event) => {
-  // Display loader as soon as the DOM is loaded
-  document.getElementById('loader').style.display = 'block';
-
-  // Parse URL parameters
-  const urlParams = new URLSearchParams(window.location.search);
-  const name = urlParams.get('name');
-  const message = urlParams.get('message');
-
-  // Replace content in the .promo div
-  if (name && message) {
-    document.querySelector('.promo p').textContent = name;
-    document.querySelector('.promo h2').textContent = message;
-  }
-
-  // Add click event listener to the present element
-  document.querySelector('.present').addEventListener('click', toggleOpen);
-
-  // Hide loader when everything is loaded
-  window.onload = function() {
-    document.getElementById('loader').style.display = 'none';
-  };
-});
-  </script>
+    setTimeout(showpage, 10);
+    </script>
+    
   
 </body>
 </html>

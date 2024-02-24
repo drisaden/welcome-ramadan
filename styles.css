@@ -5,7 +5,8 @@ body {
 
 .present {
   width: 410px;
-  margin: 0 auto;
+  margin: auto;
+  margin-top: 20%;
   cursor: pointer; /* Indicates the element is clickable */
 }
 
@@ -87,7 +88,8 @@ body {
 
 .present.open .lid {
   top: 0;
-  transform: translateX(100%) rotateY(-180deg); /* Adjust transformation for a more natural opening */
+  /* transform: translateX(100%) rotateY(-180deg); Adjust transformation for a more natural opening */
+  transform: translateY(90deg) rotateX(90deg); /* Adjust transformation for a more natural opening */
   transition: transform 0.5s ease-out; /* Ensure smooth transition */
 }
 

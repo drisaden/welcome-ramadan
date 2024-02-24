@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style3.css">
+</head>
+<body>
+    <div class="giftcontainer">
+<div class="gift">  
+<input type="checkbox" id="click">  
+<label for="click" class="click"></label>  
+<div class="wishes"></div>  
+</div>  
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function showpage() {
+      // Display loader immediately, handled by inline styles
+    
+      // Parse URL parameters and replace content
+      const urlParams = new URLSearchParams(window.location.search);
+      const name = urlParams.get('name');
+      const message = urlParams.get('message');
+    
+    //   if (name && message) {
+      if (message) {
+        // document.querySelector('.promo p').textContent = name;
+        document.querySelector('.wishes').textContent = message;
+      }
+    
+      // Event listener for the box click
+      const presentBox = document.querySelector('.giftcontainer');
+      presentBox.addEventListener('click', function() {
+        this.classList.add('open');
+        // Remove event listener to ensure it only happens once
+        presentBox.removeEventListener('click', arguments.callee);
+      });
+    });
+
+    setTimeout(showpage, 10);
+    </script>
+    
+</body>
+</html>
