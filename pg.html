@@ -1,0 +1,95 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Christmas Present</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+ /* Loader CSS */
+.loader {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000; /* Ensures loader is above everything else */
+}
+
+.loader::before {
+  content: '';
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #3498db;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+  </style>
+</head>
+<body>
+  <div id="loader" class="loader"></div>
+
+  
+  <div class="present">
+    <div class="lid">
+      <span></span>
+    </div>
+    <div class="promo">
+      <p></p>
+      <h2></h2>
+    </div>
+    <div class="box">
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+
+  <script>
+   
+
+   function toggleOpen() {
+  document.querySelector('.present').classList.toggle('open');
+
+  // Immediately remove the event listener after the first click
+  document.querySelector('.present').removeEventListener('click', toggleOpen);
+}
+
+// Add event listener on DOM content loaded
+window.addEventListener('DOMContentLoaded', (event) => {
+  // Display loader as soon as the DOM is loaded
+  document.getElementById('loader').style.display = 'block';
+
+  // Parse URL parameters
+  const urlParams = new URLSearchParams(window.location.search);
+  const name = urlParams.get('name');
+  const message = urlParams.get('message');
+
+  // Replace content in the .promo div
+  if (name && message) {
+    document.querySelector('.promo p').textContent = name;
+    document.querySelector('.promo h2').textContent = message;
+  }
+
+  // Add click event listener to the present element
+  document.querySelector('.present').addEventListener('click', toggleOpen);
+
+  // Hide loader when everything is loaded
+  window.onload = function() {
+    document.getElementById('loader').style.display = 'none';
+  };
+});
+  </script>
+  
+</body>
+</html>

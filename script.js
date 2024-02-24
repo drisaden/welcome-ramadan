@@ -1,7 +1,7 @@
 document.getElementById('generateLink').addEventListener('click', function () {
     const name = document.getElementById('name').value;
     const message = encodeURIComponent(document.getElementById('message').value);
-    const longUrl = `http://127.0.0.1:5500//single.html?name=${name}&message=${message}
+    // const longUrl = `http://127.0.0.1:5500//single.html?name=${name}&message=${message}
     `;
 
     // Use rebrand.ly API to shorten the URL
